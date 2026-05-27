@@ -1,34 +1,29 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { ChevronRight, ChevronLeft, Play, Pause } from "lucide-react"
+import { ChevronRight, ChevronLeft, Volume2, VolumeX } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 
 export default function Page2() {
   const router = useRouter()
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
   const [mounted, setMounted] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     setMounted(true)
+    // Auto-play muted on load
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
   }, [])
 
-  const togglePlay = () => {
+  const toggleMute = () => {
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause()
-      } else {
-        videoRef.current.play()
-      }
-      setIsPlaying(!isPlaying)
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
     }
-  }
-
-  const handleVideoLoaded = () => {
-    setIsLoaded(true)
   }
 
   const handleNext = () => {
@@ -58,42 +53,31 @@ export default function Page2() {
           You light up every room you enter
         </p>
 
-        {/* Video with smooth playback */}
-        <div className="relative w-full aspect-[9/16] bg-gradient-to-br from-purple-200 to-pink-200 rounded-2xl overflow-hidden mb-4">
-          {/* Loading indicator */}
-          {!isLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center z-10">
-              <div className="w-12 h-12 border-4 border-purple-300 border-t-purple-600 rounded-full animate-spin"></div>
-            </div>
-          )}
-          
+        {/* Video with instant autoplay */}
+        <div className="relative w-full aspect-[9/16] bg-black rounded-2xl overflow-hidden mb-4">
           <video
             ref={videoRef}
-            className={`w-full h-full object-contain bg-black transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onEnded={() => setIsPlaying(false)}
-            onCanPlayThrough={handleVideoLoaded}
-            onLoadedData={handleVideoLoaded}
+            className="w-full h-full object-contain"
+            loop
+            muted
+            autoPlay
             playsInline
             preload="auto"
           >
             <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lv_7597343477835238709_20260420135658-1bqhTCEvalJtbuJpxi6JyHDV8Dq8eL.mp4" type="video/mp4" />
           </video>
           
-          {/* Play/Pause overlay - only show when loaded */}
-          {isLoaded && (
-            <button
-              onClick={togglePlay}
-              className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isPlaying ? 'bg-transparent' : 'bg-black/20'}`}
-            >
-              <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg transition-all duration-300 ${isPlaying ? 'opacity-0 scale-75' : 'opacity-100 scale-100 hover:scale-110'}`}>
-                {isPlaying ? (
-                  <Pause className="w-8 h-8 md:w-10 md:h-10 text-purple-600" />
-                ) : (
-                  <Play className="w-8 h-8 md:w-10 md:h-10 text-purple-600 ml-1" />
-                )}
-              </div>
-            </button>
-          )}
+          {/* Mute/Unmute button */}
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          >
+            {isMuted ? (
+              <VolumeX className="w-5 h-5 text-purple-600" />
+            ) : (
+              <Volume2 className="w-5 h-5 text-purple-600" />
+            )}
+          </button>
         </div>
 
         {/* Navigation */}
