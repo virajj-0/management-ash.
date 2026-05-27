@@ -1,12 +1,11 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { ChevronRight, ChevronLeft, Volume2, VolumeX } from "lucide-react"
+import { ChevronRight, ChevronLeft } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 
 export default function Page4() {
   const router = useRouter()
-  const [isMuted, setIsMuted] = useState(true)
   const [mounted, setMounted] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -17,13 +16,6 @@ export default function Page4() {
       videoRef.current.play().catch(() => {})
     }
   }, [])
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-    }
-  }
 
   const handleNext = () => {
     if (videoRef.current) {
@@ -56,24 +48,12 @@ export default function Page4() {
             ref={videoRef}
             className="w-full h-full object-contain"
             loop
-            muted
             autoPlay
             playsInline
             preload="auto"
           >
             <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lv_7625993661712747781_20260420141601-qwI7yxhNxmtT9D8uOnTY3bvqdYHLdk.mp4" type="video/mp4" />
           </video>
-          
-          <button
-            onClick={toggleMute}
-            className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
-          >
-            {isMuted ? (
-              <VolumeX className="w-5 h-5 text-teal-600" />
-            ) : (
-              <Volume2 className="w-5 h-5 text-teal-600" />
-            )}
-          </button>
         </div>
 
         <div className="flex justify-between items-center">
