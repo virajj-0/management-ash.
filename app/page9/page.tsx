@@ -30,7 +30,7 @@ export default function Page9() {
       videoRef.current.pause()
     }
     setIsExiting(true)
-    setTimeout(() => router.push("/page8"), 400)
+    setTimeout(() => router.push("/page7"), 400)
   }
 
   return (
