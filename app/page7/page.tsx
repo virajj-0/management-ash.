@@ -22,7 +22,7 @@ export default function Page7() {
       videoRef.current.pause()
     }
     setIsExiting(true)
-    setTimeout(() => router.push("/page8"), 400)
+    setTimeout(() => router.push("/page9"), 400)
   }
 
   const handleBack = () => {
