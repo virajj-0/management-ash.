@@ -18,12 +18,12 @@ export default function FinalPage() {
 
   const handleBack = () => {
     setIsExiting(true)
-    setTimeout(() => router.push("/page9"), 400)
+    setTimeout(() => router.push("/page9"), 200)
   }
 
   const handleRestart = () => {
     setIsExiting(true)
-    setTimeout(() => router.push("/"), 400)
+    setTimeout(() => router.push("/"), 200)
   }
 
   return (
@@ -48,38 +48,38 @@ export default function FinalPage() {
         </div>
       )}
 
-      <div className={`relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 max-w-2xl w-full shadow-2xl text-center z-10 transition-all duration-700 ${mounted ? 'translate-y-0 scale-100' : 'translate-y-10 scale-95'}`}>
-        <Sparkles className="w-12 h-12 text-amber-400 mx-auto mb-4 animate-pulse" />
+      <div className={`relative bg-white/90 backdrop-blur-sm rounded-3xl p-6 md:p-10 max-w-2xl w-full shadow-2xl text-center z-10 transition-all duration-700 ${mounted ? 'translate-y-0 scale-100' : 'translate-y-10 scale-95'}`}>
+        <Sparkles className="w-9 h-9 text-amber-400 mx-auto mb-2 animate-pulse" />
         
         <h1 
-          className="text-4xl md:text-6xl text-rose-600 mb-6"
+          className="text-3xl md:text-5xl text-rose-600 mb-3"
           style={{ fontFamily: 'Caveat, cursive' }}
         >
           You&apos;re the Best!
         </h1>
         
-        <div className="space-y-4 mb-8">
-          <p className="text-xl text-gray-700 leading-relaxed">
+        <div className="space-y-1.5 mb-4">
+          <p className="text-base md:text-lg text-gray-700 leading-snug">
             Thank you for being the most amazing friend anyone could ever ask for.
           </p>
-          <p className="text-xl text-gray-700 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-700 leading-snug">
             Through all the ups and downs, you&apos;ve always been there.
           </p>
-          <p className="text-xl text-gray-700 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-700 leading-snug">
             I&apos;m so grateful to have you in my life!
           </p>
         </div>
 
-        <div className="bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl p-6 mb-8">
+        <div className="bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl p-4 mb-4">
           <p 
-            className="text-2xl text-rose-600"
+            className="text-lg md:text-xl text-rose-600"
             style={{ fontFamily: 'Caveat, cursive' }}
           >
             &ldquo;Some people arrive and make such a beautiful impact on your life, you can barely remember what life was like without them&rdquo;
           </p>
         </div>
 
-        <p className="text-gray-500 mb-8">
+        <p className="text-gray-500 mb-5 text-sm">
           Keep shining, Ashwini Paglu!
           <br />
           <span className="italic">- Prithvi</span>

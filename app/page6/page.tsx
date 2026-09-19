@@ -22,7 +22,7 @@ export default function Page6() {
       videoRef.current.pause()
     }
     setIsExiting(true)
-    setTimeout(() => router.push("/page7"), 400)
+    setTimeout(() => router.push("/page7"), 200)
   }
 
   const handleBack = () => {
@@ -30,7 +30,7 @@ export default function Page6() {
       videoRef.current.pause()
     }
     setIsExiting(true)
-    setTimeout(() => router.push("/page5"), 400)
+    setTimeout(() => router.push("/page5"), 200)
   }
 
   return (
@@ -43,7 +43,7 @@ export default function Page6() {
           Having you as my bestie is my superpower
         </p>
 
-        <div className="relative w-full aspect-[9/16] bg-black rounded-2xl overflow-hidden mb-4">
+        <div className="relative w-full h-[55vh] max-h-[560px] bg-black rounded-2xl overflow-hidden mb-4">
           <video
             ref={videoRef}
             className="w-full h-full object-contain"
