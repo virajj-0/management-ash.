@@ -22,7 +22,7 @@ export default function Page2() {
       videoRef.current.pause()
     }
     setIsExiting(true)
-    setTimeout(() => router.push("/page3"), 400)
+    setTimeout(() => router.push("/page3"), 200)
   }
 
   const handleBack = () => {
@@ -30,7 +30,7 @@ export default function Page2() {
       videoRef.current.pause()
     }
     setIsExiting(true)
-    setTimeout(() => router.push("/card"), 400)
+    setTimeout(() => router.push("/card"), 200)
   }
 
   return (
@@ -43,7 +43,7 @@ export default function Page2() {
           You light up every room you enter
         </p>
 
-        <div className="relative w-full aspect-[9/16] bg-black rounded-2xl overflow-hidden mb-4">
+        <div className="relative w-full h-[55vh] max-h-[560px] bg-black rounded-2xl overflow-hidden mb-4">
           <video
             ref={videoRef}
             className="w-full h-full object-contain"
